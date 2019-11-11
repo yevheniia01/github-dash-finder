@@ -6,7 +6,9 @@ class Search extends Component {
         text: '',
     }
     static propTypes={
-        searchUsers: PropTypes.func.isRequired
+        searchUsers: PropTypes.func.isRequired,
+        clearUsers: PropTypes.func.isRequired,
+        showClear: PropTypes.bool.isRequired,
     }
     onChange= (e)=>{
          this.setState({
@@ -19,6 +21,7 @@ class Search extends Component {
         this.setState({text: ''})
     }
     render() {
+        const {showClear, clearUsers} = this.props;
         return (
             <div>
 
@@ -35,6 +38,7 @@ class Search extends Component {
                       value='search' 
                       className='btn btn-dark btn-block' />
                 </form>
+                {showClear && <button className='btn btn-light btn-block' onClick={clearUsers}>Clear</button>}
                 
             </div>
         )
